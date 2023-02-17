@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Report extends Model
 {
@@ -20,4 +21,9 @@ class Report extends Model
     protected $casts = [
         'location' => 'array',
     ];
+
+    public function medias(): MorphMany
+    {
+        return $this->morphMany(Media::class, 'mediable');
+    }
 }

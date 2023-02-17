@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Report;
 use App\Repositories\ReportRepository;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Arr;
 
 class ReportService
 {
@@ -27,6 +28,17 @@ class ReportService
 
     public function create(array $data): Report
     {
+        if($medias = request()->file('medias')) {
+            $data = Arr::except($data, ['medias']);
+            foreach($medias as $media) {
+                $path = $media->store('medias');
+                $data['medias'][] = [
+                    'path' => $path,
+                    'mime_type' => $media->getMimeType(),
+                ];
+            }
+        }
+        
         return $this->reportRepository->create($data);
     }
 

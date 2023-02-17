@@ -75,7 +75,10 @@ class ReportController extends Controller
      *     tags={"Reports"},
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(ref="#/components/schemas/CreateReportRequest")
+     *         @OA\MediaType(
+     *          mediaType="multipart/form-data",
+     *          @OA\Schema(ref="#/components/schemas/CreateReportRequest")
+     *        )
      *     ),
      *     @OA\Response(
      *         response=201,

@@ -21,8 +21,11 @@ class ReportFactory extends Factory
             'title' => fake()->sentence(),
             'description' => fake()->paragraph(),
             'location' => json_encode([
-                'lat' => fake()->latitude(),
-                'lng' => fake()->longitude(),
+                'display_name' => fake()->address(),
+                'coordinates' => [
+                    'lat' => fake()->latitude(),
+                    'lng' => fake()->longitude(),
+                ]
             ]),
             'status' => fake()->randomElement(['open', 'in_progress', 'resolved', 'closed']),
             'user_id' => User::factory(),

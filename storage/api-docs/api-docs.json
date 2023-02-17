@@ -91,7 +91,7 @@
                 "requestBody": {
                     "required": true,
                     "content": {
-                        "application/json": {
+                        "multipart/form-data": {
                             "schema": {
                                 "$ref": "#/components/schemas/CreateReportRequest"
                             }
@@ -371,8 +371,15 @@
                         "example": "Report description"
                     },
                     "location": {
-                        "type": "string",
-                        "example": "Report location"
+                        "type": "array",
+                        "items": {
+                            "type": "number",
+                            "format": "float"
+                        },
+                        "example": [
+                            "-6.1753924",
+                            "106.827153"
+                        ]
                     },
                     "category": {
                         "type": "string",
@@ -381,6 +388,14 @@
                     "user_id": {
                         "type": "integer",
                         "example": "1"
+                    },
+                    "medias": {
+                        "description": "Report medias",
+                        "type": "array",
+                        "items": {
+                            "type": "file",
+                            "format": "binary"
+                        }
                     }
                 },
                 "type": "object"
