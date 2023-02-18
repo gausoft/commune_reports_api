@@ -39,7 +39,7 @@ class ReportService
             }
         }
         
-        return $this->reportRepository->create($data);
+        return $this->reportRepository->create([...$data, 'user_id' => auth()->user()->id]);
     }
 
     public function update(int $id, array $data): Report

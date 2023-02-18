@@ -22,6 +22,7 @@ class ReportController extends Controller
      *      path="/v1/reports",
      *      operationId="getReportsList",
      *      tags={"Reports"},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="status",
      *          in="query",
@@ -73,6 +74,7 @@ class ReportController extends Controller
      *     operationId="createReport",
      *     summary="Create a new report",
      *     tags={"Reports"},
+     *     security={{"sanctum":{}}},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\MediaType(
@@ -101,6 +103,7 @@ class ReportController extends Controller
      *      path="/v1/reports/{id}",
      *      operationId="getReportById",
      *      tags={"Reports"},
+     *      security={{"sanctum":{}}},
      *      summary="Get report information",
      *      description="Returns report data",
      *
@@ -131,6 +134,7 @@ class ReportController extends Controller
      *      path="/v1/reports/{id}",
      *      operationId="updateReport",
      *      tags={"Reports"},
+     *      security={{"sanctum":{}}},
      *      summary="Update existing report",
      *      description="Returns updated report data",
      *
@@ -173,6 +177,7 @@ class ReportController extends Controller
      *      path="/v1/reports/{id}",
      *      operationId="deleteReport",
      *      tags={"Reports"},
+     *      security={{"sanctum":{}}},
      *      summary="Delete existing report",
      *      description="Deletes a record and returns no content",
      *

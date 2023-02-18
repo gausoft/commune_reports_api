@@ -26,9 +26,8 @@ class CreateReportRequest extends FormRequest
      * 
      * @OA\Property(property="title", type="string", example="Report title"),
      * @OA\Property(property="description", type="string", example="Report description"),
-     * @OA\Property(property="location", type="array", @OA\Items(type="number", format="float"), example={"-6.1753924", "106.827153"}),
+     * @OA\Property(property="location", type="array", @OA\Items(type="number", format="float"), example={-6.175392, 106.827153}),
      * @OA\Property(property="category", type="string", example="Report category")
-     * @OA\Property(property="user_id", type="integer", example="1"),
      * @OA\Property(
      *   description="Report medias",
      *   property="medias",
@@ -43,10 +42,9 @@ class CreateReportRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:255',
-            'location' => 'required|array|max:255',
-            // 'category' => 'required|string|max:255',
-            'user_id' => 'required|integer|exists:users,id',
-            'medias' => 'nullable|array',
+            'location' => 'required|max:255',
+            'category' => 'required|string|max:255',
+            'medias' => 'nullable',
             'medias.*' => 'nullable|file|mimes:jpeg,png,gif,svg,webp,mp4,mov|max:5000',
         ];
     }
